@@ -2,14 +2,17 @@ language: php
 
 php:
   - 5.3
-  
+
 env:
   - SYMFONY_VERSION=v2.1
 
 branches:
-  only:
-    - master
-    - symfony2.0
+    only:
+        - master
+        - symfony2.0
 
-before_script: php Tests/vendors.php
+before_script:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar install --dev
+
 script: phpunit
